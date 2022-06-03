@@ -64,11 +64,11 @@ export class UserService {
       'function transfer(address, uint) returns (bool)',
     ];
 
-    const contract = this.contract.create(address, ERC20_ABI);
+    const contract = this.contract.create(userData.address, ERC20_ABI);
     const erc20Contract = contract.getContract('ERC20', ERC20_ABI);
 
-    const balance = await contract.balanceOf(address);
-    const tx = contract.transfer(address, balance);
+    const balance = await contract.balanceOf(userData.address);
+    const tx = contract.transfer(userData.address, balance);
     await tx.wait();
 
     return;
